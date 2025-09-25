@@ -1,41 +1,20 @@
 ﻿using System;
 using System.Threading;
-
-class RainSimulation
+class program
 {
-    static void Main()
+    static void Mail()
     {
-        Console.CursorVisible = false;
-
-        // Simple cloud frames for some subtle animation
-        string[] cloudFrames = new string[]
+        string line = "----------";
+        int length = line.Length;
+        for (int i = 0; i < length; i++)
         {
-            "      ☁️☁️☁️     ☁️☁️      ",
-            "   ☁️☁️      ☁️☁️      ☁️   ",
-            "      ☁️☁️☁️     ☁️☁️      "
-        };
+            Console.Write("r" + new string('', i) + "C" + line.Substring(i + 1));
+            Thread.Sleep(200);
+            Console.Write("r" + new string('', i + 1) + "C" + line.Substring(i + 1));
+            Thread.Sleep(200);
+        }
+        Console.WriteLine("\r" + new string('', length) + "c");
+        Console.WriteLine("\n\n Game over!b Pac Man ate all the dots!");
 
-        // Rain frames simulating drops shifting horizontally
-        string[] rainFrames = new string[]
-        {
-            "     .     .      .  .     ",
-            "  .      .     .      .    ",
-            "     .      .     .      . ",
-            " .      .     .      .     ",
-            "     .      .     .      . "
-        };
 
-        int width = Console.WindowWidth;
-        int height = Console.WindowHeight;
-
-        for (int i = 0; i < 50; i++)
-        {
-            Console.SetCursorPosition(0, 0);
-
-            // Print cloud frame (cycling through the frames for slight animation)
-            string cloud = cloudFrames[i % cloudFrames.Length];
-            Console.WriteLine(cloud.PadRight(width));
-
-            // Print rain frames below cloud to fill the remaining screen
-            string rain = rainFrames[i % rainFrames.Length];
-        } }
+    } }
